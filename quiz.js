@@ -2,13 +2,18 @@
 var questions = [
   {
     question: "What is the answer to this queston?",
-    answers: ["First answer", "second answer", "third answer", "fourth answer"],
+    answers: ["corrent answer", "wrong answer", "longer wrong answer", "incorrect answer"],
     correctAnswer: 0
   },
   {
     question: "What is your name?",
     answers: ["John", "Mary", "George", "Ryan"],
     correctAnswer: 3
+  },
+  {
+    question: "What year is it currently?",
+    answers: ["2014", "2001", "2020", "1995", "1942"],
+    correctAnswer: 2
   }
 ];
 
@@ -24,11 +29,19 @@ var statusDisplay = document.getElementById("lastQuestionStatus");
 var finalScoreDisplay = document.getElementById("finalScore");
 var submitScoreBtn = document.getElementById("submitScore");
 var startQuizBtn = document.getElementById("startQuiz");
+var nameInput = document.getElementById("name");
+
+// constants for game functionality and local storage
+const GAME_TIME = 10;
+const CORRECT_SCORE = 10;
+const WRONG_SCORE = 5;
+const NEW_HIGHSCORE_KEY = "newHighscore"
 
 // variable declaration
 var score;
 var secondsLeft;
 var timerInterval;
+var statusTimeout;
 var questionIndex;
 var currentQuestion;
 
@@ -48,6 +61,8 @@ function startQuiz() {
   secondsLeft = 10;
   score = 0;
   questionIndex = 0;
+
+  // render the time left
   renderTime();
 
   // start an interval for the timer
@@ -119,8 +134,8 @@ function questionAnswered(event) {
   if (isButton) {
     var answerIndex = parseInt(event.target.getAttribute("dataIndex"));
 
-    // if answer is correct, add 10 to score
-    // if incorrect, subtract 5 from score (or 0 out score)
+    // if answer is correct, add to score
+    // if incorrect, subtract from score (or 0 out score)
     // also update status display on page
     if (answerIndex === currentQuestion.correctAnswer) {
       score += 10;
@@ -134,7 +149,8 @@ function questionAnswered(event) {
     statusArea.style.display = "block";
 
     // hide status area after certain amount of time
-    setTimeout(function() {
+    clearTimeout(statusTimeout);
+    statusTimeout = setTimeout(function() {
       statusArea.style.display = "none";
     }, 2000);
 
@@ -143,11 +159,26 @@ function questionAnswered(event) {
   }
 }
 
+function submitScore(event) {
+  event.preventDefault();
+
+  // save the high score from this game into local storage
+  var highscore = {
+    name: nameInput.value,
+    score: score
+  }
+  localStorage.setItem(NEW_HIGHSCORE_KEY, JSON.stringify(highscore));
+
+  // redirect to highscores page
+  window.location.href = "highscores.html";
+}
+
 // render time left on page
 function renderTime() {
   timerDisplay.textContent = secondsLeft;
 }
 
-// call startQuiz() when "Start Quiz" button pressed
+// event listeners for clicking Start Quiz, clicking on an answer, and clicking the Submit button
 startQuizBtn.addEventListener("click", startQuiz);
 answerList.addEventListener("click", questionAnswered);
+submitScoreBtn.addEventListener("click", submitScore);
