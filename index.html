@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <title>Javascript Code Quiz</title>
+</head>
+
+<body>
+  <header class="container-fluid mt-2">
+    <div class="row">
+      <a class="col" href="highscores.html">View Highscores</a>
+
+      <p class="col d-flex justify-content-end">Time Left:&nbsp;<span id="time">0</span><!-- &nbsp;seconds -->
+      </p>
+    </div>
+  </header>
+
+  <main class="container px-5">
+    <!-- Game introduction - will dissappear after game starts (display: none) and come back before every game -->
+    <section id="introduction" class="text-center">
+      <h1>Coding Quiz Challenge</h1>
+      <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers
+        will penalize your time by ten seconds!</p>
+      <button id="startQuiz" type="button" class="btn btn-primary">Start Quiz</button>
+    </section>
+
+    <!-- area to hold question and answers -->
+    <section id="questionArea" style="display: none;">
+      <h1 id="question">Placeholder Question?</h1>
+      <ul id="answers" class="px-0" style="list-style-type: none;">
+        <li class="mt-1">
+          <button type="button" class="btn btn-primary">1. Placeholder answer</button>
+        </li>
+      </ul>
+    </section>
+
+    <!-- area to display when the quiz finishes -->
+    <section id="quizFinished" style="display: none;">
+      <h2>All Done!</h2>
+      <p>Your final score is&nbsp;<span id="finalScore">22</span>.</p>
+      <form>
+        <label for="name">Enter Initials:</label>
+        <input type="text" id="name">
+        <button type="submit" id="submitScore" class="btn btn-primary ml-1 mb-1 py-0">Submit</button>
+      </form>
+    </section>
+
+    <!-- area to display question status -->
+    <div id="statusArea" class="border-top mt-2 py-2 text-secondary" style="display: none;">
+      <p><em id="lastQuestionStatus">Wrong!</em></p>
+    </div>
+
+    <script src="quiz.js"></script>
+  </main>
+</body>
+
+</html>
