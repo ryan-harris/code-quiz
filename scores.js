@@ -33,15 +33,13 @@ function initScores() {
   for (var i = 0; i < highScores.length; i++) {
     // create an li element
     var liElement = document.createElement("li");
-    liElement.setAttribute("class", "mt-1 px-1");
-    liElement.style = "background-color: lightblue;";
+    liElement.setAttribute("class", "px-1");
+    if (i % 2 === 0) {
+      liElement.style = "background-color: lightblue;";
+    }
     // set the text content to display the score
     liElement.textContent =
-      (i + 1) +
-      ". " +
-      highScores[i].name +
-      " - " +
-      highScores[i].score;
+      `${i + 1}. ${highScores[i].name} - ${highScores[i].score}`;
 
     // append li element to the score list
     scoreList.appendChild(liElement);

@@ -16,7 +16,7 @@
     <div class="row">
       <a class="col" href="highscores.html">View Highscores</a>
 
-      <p class="col d-flex justify-content-end">Time Left:&nbsp;<span id="time">0</span><!-- &nbsp;seconds -->
+      <p class="col d-flex justify-content-end">Time Left:&nbsp;<span id="time">0</span>
       </p>
     </div>
   </header>
@@ -30,7 +30,7 @@
       <button id="startQuiz" type="button" class="btn btn-primary">Start Quiz</button>
     </section>
 
-    <!-- area to hold question and answers -->
+    <!-- area to hold question and answers, hidden initially -->
     <section id="questionArea" style="display: none;">
       <h1 id="question">Placeholder Question?</h1>
       <ul id="answers" class="px-0" style="list-style-type: none;">
@@ -40,7 +40,7 @@
       </ul>
     </section>
 
-    <!-- area to display when the quiz finishes -->
+    <!-- area to display when the quiz finishes, hidden initially -->
     <section id="quizFinished" style="display: none;">
       <h2>All Done!</h2>
       <p>Your final score is&nbsp;<span id="finalScore">22</span>.</p>
@@ -51,7 +51,7 @@
       </form>
     </section>
 
-    <!-- area to display question status -->
+    <!-- area to display question status, hidden initially -->
     <div id="statusArea" class="border-top mt-2 py-2 text-secondary" style="display: none;">
       <p><em id="lastQuestionStatus">Wrong!</em></p>
     </div>
