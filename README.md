@@ -20,6 +20,9 @@ The final score is the remaining time after all questions are answered.  Wrong a
 Sample screenshots of application:
 
 ![start](images/start.jpg)
+
 ![quiz](images/quiz.jpg)
+
 ![submit](images/submit.jpg)
+
 ![highscores](images/highscores.jpg)
